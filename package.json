@@ -1,6 +1,6 @@
 {
   "name": "vin-content-editable",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "author": {
     "name": "Vinit Tomar",
     "email": "vinit.tomar68@gmail.com"
@@ -23,6 +23,6 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/VinitTomar/ng-content-editable.git"
+    "url": "https://github.com/VinitTomar/vin-content-editable.git"
   }
 }
