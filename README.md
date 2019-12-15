@@ -1,8 +1,11 @@
 # vinContentEditable
 
-By default angular forms only support HTML input element. If someone in their project has to use an element with `contenteditable=true`, in that case they do not any choice and have to manually check for validation and other form state like touched or pristien etc. They have to use a lot of boiler plate code. 
+By default angular forms only support HTML input element. If someone in their project has to use an element with `contenteditable=true`, in that case they do not any choice except write code for checking validation and other form state like touched or pristien etc, by themselves, which is very error prone.
 
-To overcome this issue have created this package `vinContentEditable`. Use this directive if there is a need of using `contenteditable=true`. 
+To overcome this issue, I have created this package `vinContentEditable`. This package has two directives.
+
+1. vinContentEditable: used for adding support for `contenteditable=true` with angular forms.
+2. matContentEditableInput: used for adding support for [angular material form field](https://material.angular.io/components/form-field/overview).
 
 ## Installation
 
@@ -31,11 +34,20 @@ npm install --save vin-content-editable.
 export class AppModule { }
 ```
 
-2. Use `vinContentEditable` directive on the target HTML element.
+2. Use `vinContentEditable` directive for angular forms and `matContentEditableInput` for material form field on the target HTML element.
 
 ```
-<p vinContentEditable [formControl]="fc"></p>
-{{fc.value}}
+<div vinContentEditable [formControl]="fc"></div>
+```
+
+### For angular material form field
+
+```
+<mat-form-field>
+  <div vinContentEditable [formControl]="fc" matContentEditableInput placeholder="content editable"></div>
+  <mat-error *ngIf="fc.touched && fc.invalid">{{matceErr()}}</mat-error>
+  <mat-hint>content editable field</mat-hint>
+</mat-form-field>
 ```
 
 3. Here is the type script file code 
@@ -51,6 +63,22 @@ export class AppModule { }
     });
   }
 ```
+
+4. This is `optional`. In case of angular material there are very good changes that you design might break. To overcome this issue add below style to `global style sheet` or in the current componet with `::ng-deep`. 
+
+```
+.mat-form-field-infix {
+    [contenteditable]:first-child {
+      margin: 0px;
+      outline: 0px;
+      min-height: 1.125em;
+      line-height: 1.125em;
+      display: inline-block;
+    }
+  }
+```
+
+or if you are using scss, you can import style from `@import 'vin-content-editable/mat-content-editable-styles';` and run mixin `mat-content-editable-styles` after your angular material styles.
 
 Thats all you have to do.
 

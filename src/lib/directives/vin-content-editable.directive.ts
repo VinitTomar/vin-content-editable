@@ -14,7 +14,8 @@ import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
     '[attr.tabindex]': 'disabled ? null : -1',
     '[id]': 'uniqueId',
     '[style.opacity]': 'disabled ? 0.7 : null'
-  }
+  },
+  exportAs: 'vinContentEditable'
 })
 export class VinContentEditable implements ControlValueAccessor, OnInit {
 
@@ -50,7 +51,12 @@ export class VinContentEditable implements ControlValueAccessor, OnInit {
 
   @HostListener('input', ['$event.target'])
   onInput(elm: HTMLElement) {
-    this.onChange(elm[this.valFrom]);
+    if (elm.textContent) {
+      this.onChange(elm[this.valFrom]);
+    } else {
+      elm.innerHTML = '';
+      this.onChange('');
+    }
   }
 
   @HostListener('focusout', ['$event.target'])
@@ -74,7 +80,7 @@ export class VinContentEditable implements ControlValueAccessor, OnInit {
     this.disabled = isDisabled;
 
     if (this.disabled) {
-      this._elm.nativeElement.removeAttribute('contenteditable');
+      this._elm.nativeElement.setAttribute('contenteditable', 'false');
     } else {
       this._elm.nativeElement.setAttribute('contenteditable', 'true');
     }
