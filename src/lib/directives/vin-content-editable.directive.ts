@@ -73,7 +73,7 @@ export class VinContentEditable implements ControlValueAccessor, OnInit {
   }
 
   writeValue(value: string): void {
-    this._elm.nativeElement.innerText = value;
+    this._elm.nativeElement[this._valFrom] = value;
   }
 
   registerOnChange(fn: any): void {
