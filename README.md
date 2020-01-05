@@ -84,6 +84,12 @@ Thats all you have to do.
 
 If you find any issue please feel free to raise it on github.
 
+### Tip
+You can use `innerText` or `innerHTML` to get value from with `vinContentEditable` directive. E.g. 
+```
+vinContentEditable="innerHTML"
+```
+
 ## Example
 Here is the [Demo](https://stackblitz.com/edit/ng-content-editable)
 

@@ -23,7 +23,15 @@ export class VinContentEditable implements ControlValueAccessor, OnInit {
 
   private isDisabled = false;
 
-  valFrom: string = 'innerText';
+  @Input('vinContentEditable')
+  set valueFrom(val: 'innerText' | 'innerHTML') {
+    if (val && val !== 'innerText' && val !== 'innerHTML') {
+      throw ('Only "innerText or innerHTML can be assigned to vinContentEditable.');
+    } else {
+      this._valFrom = val || 'innerText';
+    }
+  }
+  private _valFrom: string = 'innerText';
 
   @Input('disabled')
   get disabled() {
@@ -52,7 +60,7 @@ export class VinContentEditable implements ControlValueAccessor, OnInit {
   @HostListener('input', ['$event.target'])
   onInput(elm: HTMLElement) {
     if (elm.textContent) {
-      this.onChange(elm[this.valFrom]);
+      this.onChange(elm[this._valFrom]);
     } else {
       elm.innerHTML = '';
       this.onChange('');
