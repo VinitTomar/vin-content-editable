@@ -15,7 +15,7 @@ npm install --save vin-content-editable.
 
 1. Import `VinContentEditableModule` in the component module where we want to use generict toggle.
 ```
-  import { VinContentEditableModule } from 'ng-content-editable';
+  import { VinContentEditableModule } from 'vin-content-editable';
 
   @NgModule({
   declarations: [
