@@ -1,10 +1,11 @@
 @mixin mat-content-editable-styles() {
-  .mat-form-field-infix {
-    [contenteditable]:first-child {
+  .mat-form-field-infix> {
+    [contenteditable] {
       margin: 0px;
       outline: 0px;
       min-height: 1.125em;
       line-height: 1.125em;
+      min-width: 1px;
       display: inline-block;
     }
   }

@@ -59,10 +59,10 @@ export class VinContentEditable implements ControlValueAccessor, OnInit {
 
   @HostListener('input', ['$event.target'])
   onInput(elm: HTMLElement) {
-    if (elm.textContent) {
-      this.onChange(elm[this._valFrom]);
+    if (this._elm.nativeElement.textContent) {
+      this.onChange(this._elm.nativeElement[this._valFrom]);
     } else {
-      elm.innerHTML = '';
+      this._elm.nativeElement.innerHTML = '';
       this.onChange('');
     }
   }
