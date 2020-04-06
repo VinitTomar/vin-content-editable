@@ -11,7 +11,7 @@ import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
     }
   ],
   host: {
-    '[attr.tabindex]': 'disabled ? null : -1',
+    '[attr.tabindex]': 'disabled ? null : 1',
     '[id]': 'uniqueId',
     '[style.opacity]': 'disabled ? 0.7 : null'
   },
