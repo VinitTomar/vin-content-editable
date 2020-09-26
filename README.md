@@ -11,6 +11,8 @@ To overcome this issue, I have created this package `vinContentEditable`. This p
 
 npm install --save vin-content-editable.
 
+For Angular 10 use version 2.0.x
+
 ## Usage
 
 1. Import `VinContentEditableModule` in the component module where we want to use generict toggle.
